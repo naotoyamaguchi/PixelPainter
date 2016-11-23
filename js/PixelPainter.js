@@ -15,6 +15,7 @@ function createColorGrid(){
     var clearButton = document.createElement('button');
     miscButtons.appendChild(clearButton);
     clearButton.innerHTML = 'Clear';
+<<<<<<< HEAD
 
     var drawButton = document.createElement('button');
     miscButtons.appendChild(drawButton);
@@ -59,6 +60,8 @@ function createColorGrid(){
         });
       }
     });
+=======
+>>>>>>> caity_master
 
     clearButton.addEventListener('click', function(){
       for(var i = 0; i < document.querySelectorAll('.pixels').length; i++){
@@ -84,6 +87,11 @@ function createColorGrid(){
     colorButtons[j] = document.createElement('div');
     colorButtons[j].className = "palleteButton";
     pallete.appendChild(colorButtons[j]);
+<<<<<<< HEAD
+=======
+    // colorButtons[j].style.width = 20;
+    // colorButtons[j].style.height = 20;
+>>>>>>> caity_master
     colorButtons[j].style.backgroundColor = currentColorOfLoop;
     colorButtons[j].addEventListener('click', function(n){
       colorChoice = this.style.backgroundColor;
