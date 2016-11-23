@@ -11,17 +11,69 @@ function createColorGrid(){
     var miscButtons = document.createElement('div');
     miscButtons.className = "miscButtons";
     mainBody.appendChild(miscButtons);
+
     var clearButton = document.createElement('button');
     miscButtons.appendChild(clearButton);
     clearButton.innerHTML = 'Clear';
 
+    var drawButton = document.createElement('button');
+    miscButtons.appendChild(drawButton);
+    drawButton.innerHTML = 'Draw';
+
+    var eraseButton = document.createElement('button');
+    miscButtons.appendChild(eraseButton);
+    eraseButton.innerHTML = 'Erase';
+
+    var pixelButton = document.createElement('button');
+    miscButtons.appendChild(pixelButton);
+    pixelButton.innerHTML = 'Pixelz';
+
+    pixelButton.addEventListener('click', function(){
+      for(var z = 0; z < document.querySelectorAll('.pixels').length; z++){
+          document.querySelectorAll('.pixels')[z].addEventListener('click', function(event){
+          this.style.backgroundColor = colorChoice;
+        });
+      }
+    });
+
+    eraseButton.addEventListener('click', function(){
+      for(var k = 0; k < document.querySelectorAll('.pixels').length; k++){
+          document.querySelectorAll('.pixels')[k].addEventListener('mouseover', function(event){
+              if (event.buttons === 1) {
+                  this.style.backgroundColor = 'white';
+              }
+            });
+          }
+        });
+
+    drawButton.addEventListener('click', function(){
+      for(var i = 0; i < document.querySelectorAll('.pixels').length; i++){
+      document.querySelectorAll('.pixels')[i].addEventListener('mouseover', function(event){
+          if (event.buttons === 1) {
+            if (event.shiftKey) {
+              this.style.backgroundColor = colorChoice;
+            } else {
+              this.style.backgroundColor = colorChoice;
+            }
+          }
+        });
+      }
+    });
+
     clearButton.addEventListener('click', function(){
-      console.log('tets');
       for(var i = 0; i < document.querySelectorAll('.pixels').length; i++){
       document.querySelectorAll('.pixels')[i].style.backgroundColor = 'white';
+
+
     }
     });
   }
+
+  // function drawButton(){
+  //   var drawButton = document.createElement('div');
+  //   drawButton.innerHTML = 'Draw';
+  //   miscButtons.appendChild(drawButton);
+  // }
 
   function makePallete(){
     var pallete = document.createElement('div');
@@ -32,8 +84,6 @@ function createColorGrid(){
     colorButtons[j] = document.createElement('div');
     colorButtons[j].className = "palleteButton";
     pallete.appendChild(colorButtons[j]);
-    // colorButtons[j].style.width = 20;
-    // colorButtons[j].style.height = 20;
     colorButtons[j].style.backgroundColor = currentColorOfLoop;
     colorButtons[j].addEventListener('click', function(n){
       colorChoice = this.style.backgroundColor;
@@ -58,9 +108,10 @@ function createColorGrid(){
       }
     }
   }
+
   // return makeGrid(40,40);
   return {
-    makeGrid: makeGrid(10, 10),
+    makeGrid: makeGrid(40, 40),
     makePallete: makePallete(),
     miscButtons: miscButtons()
   };

@@ -17,8 +17,8 @@ h1 {
   padding: 0 20px 0 0;
 }
 .pixels{
-  height: 50px;
-  width: 50px;
+  height: 10px;
+  width: 10px;
   background: #fff;
 }
 .pixels:hover{
