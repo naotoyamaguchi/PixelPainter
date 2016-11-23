@@ -43,8 +43,8 @@ h1 {
 }
 .miscButtons{
   display: inline-block;
-  vertical-align:bottom;
-  margin-left: -62px;
+  vertical-align:top;
+  margin: 0 0 0 15px;
 }
 .miscButtons > button {
   font-family: 'Tahoma', 'Arial', sans-serif;
@@ -56,8 +56,8 @@ h1 {
   border-radius: 5px;
   display: block;
   background: linear-gradient(#fff, #f3f3f3);
+  margin: 0 0 10px 0;
 }
 .miscButtons > button:hover {
   background: linear-gradient(#f3f3f3, #fff);
-
 }
