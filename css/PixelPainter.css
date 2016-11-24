@@ -17,6 +17,7 @@ h1 {
   padding: 0 20px 0 0;
 }
 .pixels{
+  height: 10px;
   height: 12px;
   width: 10px;
   background: #fff;

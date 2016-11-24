@@ -51,7 +51,7 @@ function createColorGrid(){
       document.querySelectorAll('.pixels')[i].addEventListener('mouseover', function(event){
           if (event.buttons === 1) {
             if (event.shiftKey) {
-              this.style.backgroundColor = colorChoice;
+              this.style.backgroundColor = 'white';
             } else {
               this.style.backgroundColor = colorChoice;
             }
@@ -68,12 +68,6 @@ function createColorGrid(){
     }
     });
   }
-
-  // function drawButton(){
-  //   var drawButton = document.createElement('div');
-  //   drawButton.innerHTML = 'Draw';
-  //   miscButtons.appendChild(drawButton);
-  // }
 
   function makePallete(){
     var pallete = document.createElement('div');
@@ -102,6 +96,15 @@ function createColorGrid(){
         var cell = tr.appendChild(document.createElement('td'));
         cell.className = "pixels";
         cell.style.backgroundColor = 'white';
+        cell.addEventListener('mouseover', function(){
+          if (event.buttons === 1) {
+            if (event.shiftKey) {
+              this.style.backgroundColor = 'white';
+            } else {
+              this.style.backgroundColor = colorChoice;
+            }
+          }
+        });
         cell.addEventListener('click', function(){
           this.style.backgroundColor = colorChoice;
         });
