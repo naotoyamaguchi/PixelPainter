@@ -96,6 +96,15 @@ function createColorGrid(){
         var cell = tr.appendChild(document.createElement('td'));
         cell.className = "pixels";
         cell.style.backgroundColor = 'white';
+        cell.addEventListener('mouseover', function(){
+          if (event.buttons === 1) {
+            if (event.shiftKey) {
+              this.style.backgroundColor = 'white';
+            } else {
+              this.style.backgroundColor = colorChoice;
+            }
+          }
+        });
         cell.addEventListener('click', function(){
           this.style.backgroundColor = colorChoice;
         });
