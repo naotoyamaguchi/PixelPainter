@@ -16,55 +16,9 @@ function createColorGrid(){
     miscButtons.appendChild(clearButton);
     clearButton.innerHTML = 'Clear';
 
-    var drawButton = document.createElement('button');
-    miscButtons.appendChild(drawButton);
-    drawButton.innerHTML = 'Draw';
-
-    var eraseButton = document.createElement('button');
-    miscButtons.appendChild(eraseButton);
-    eraseButton.innerHTML = 'Erase';
-
-    var pixelButton = document.createElement('button');
-    miscButtons.appendChild(pixelButton);
-    pixelButton.innerHTML = 'Pixelz';
-
-    pixelButton.addEventListener('click', function(){
-      for(var z = 0; z < document.querySelectorAll('.pixels').length; z++){
-          document.querySelectorAll('.pixels')[z].addEventListener('click', function(event){
-          this.style.backgroundColor = colorChoice;
-        });
-      }
-    });
-
-    eraseButton.addEventListener('click', function(){
-      for(var k = 0; k < document.querySelectorAll('.pixels').length; k++){
-          document.querySelectorAll('.pixels')[k].addEventListener('mouseover', function(event){
-              if (event.buttons === 1) {
-                  this.style.backgroundColor = 'white';
-              }
-            });
-          }
-        });
-
-    drawButton.addEventListener('click', function(){
-      for(var i = 0; i < document.querySelectorAll('.pixels').length; i++){
-      document.querySelectorAll('.pixels')[i].addEventListener('mouseover', function(event){
-          if (event.buttons === 1) {
-            if (event.shiftKey) {
-              this.style.backgroundColor = 'white';
-            } else {
-              this.style.backgroundColor = colorChoice;
-            }
-          }
-        });
-      }
-    });
-
     clearButton.addEventListener('click', function(){
       for(var i = 0; i < document.querySelectorAll('.pixels').length; i++){
       document.querySelectorAll('.pixels')[i].style.backgroundColor = 'white';
-
-
     }
     });
   }
