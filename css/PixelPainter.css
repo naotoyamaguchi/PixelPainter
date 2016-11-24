@@ -15,6 +15,7 @@ h1 {
 .grid{
   display: inline-block;
   padding: 0 20px 0 0;
+  border-collapse: collapse;
 }
 .pixels{
   height: 10px;
