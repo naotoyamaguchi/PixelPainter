@@ -1,11 +1,26 @@
+@import url('https://fonts.googleapis.com/css?family=Orbitron');
 body {
   background: #F0F0F0;
+  text-align: center;
+  margin: 0;
 }
 h1 {
-  font-family: 'Tahoma', 'Arial', sans-serif;
+  font-family: 'Orbitron', 'Arial', sans-serif;
   font-weight: 300;
   font-size: 2em;
-  color: #333;
+  text-transform: uppercase;
+  color: #fff;
+  background: #4285D3;
+  width: 100%;
+  margin: 0;
+  padding: 30px 0;
+  letter-spacing: 4px;
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,0.2);
+
+}
+#pixelPainter{
+  padding: 40px 0 0 82px;
+  display: inline-block;
 }
 .square{
   border: 2px solid red;
@@ -18,7 +33,7 @@ h1 {
   border-collapse: collapse;
 }
 .pixels{
-  height: 10px;
+  /*height: 10px;*/
   height: 12px;
   width: 10px;
   background: #fff;
@@ -36,22 +51,23 @@ h1 {
   border: 0.5px solid #F3F3F3;
 }
 .palletebutton{
-  height: 30px;
-  width: 30px;
-  margin: 10px 0;
+  height: 25px;
+  width: 25px;
+  margin: 8px 0;
 }
+
 .palletebutton:hover{
   cursor: pointer;
 }
 .miscButtons{
   display: inline-block;
-  vertical-align:top;
-  margin: 0 0 0 15px;
+  vertical-align: bottom;
+  margin: 0 0 0 -57px;
 }
 .miscButtons > button {
   font-family: 'Tahoma', 'Arial', sans-serif;
   color: #333;
-  font-size: 16px;
+  font-size: 14px;
   box-shadow: 0 1px 4px 0 rgba(0,0,0,0.2);
   padding: 10px 30px;
   border: 0.5px solid #F3F3F3;
@@ -59,6 +75,9 @@ h1 {
   display: block;
   background: linear-gradient(#fff, #f3f3f3);
   margin: 0 0 10px 0;
+}
+.miscButtons > button:nth-child(3){
+  margin: 0;
 }
 .miscButtons > button:hover {
   background: linear-gradient(#f3f3f3, #fff);
