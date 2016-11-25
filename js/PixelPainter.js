@@ -3,8 +3,11 @@ var colorArray = ['#7F7F7F', '#000', '#4990E2', '#9012FE', '#417505', '#7ED321',
 var colorChoice = 'black';
 var colorButtons = [];
 var currentColorOfLoop;
+var savedGrid = [];
 
 function createColorGrid(){
+
+
 
 
   function miscButtons(){
@@ -20,6 +23,26 @@ function createColorGrid(){
       for(var i = 0; i < document.querySelectorAll('.pixels').length; i++){
       document.querySelectorAll('.pixels')[i].style.backgroundColor = 'white';
     }
+    });
+
+    var saveButton = document.createElement('button');
+    miscButtons.appendChild(saveButton);
+    saveButton.innerHTML = 'Save';
+    saveButton.addEventListener('click', function(){
+      console.log('test');
+      for(var z = 0; z < document.querySelectorAll('.pixels').length; z++){
+        savedGrid[z] = document.querySelectorAll('.pixels')[z].style.backgroundColor;
+      }
+      console.log(savedGrid);
+    });
+
+    var loadButton = document.createElement('button');
+    miscButtons.appendChild(loadButton);
+    loadButton.innerHTML = 'Load';
+    loadButton.addEventListener('click', function(){
+      for(var y = 0; y < document.querySelectorAll('.pixels').length; y++){
+        document.querySelectorAll('.pixels')[y].style.backgroundColor = savedGrid[y];
+      }
     });
   }
 
@@ -50,17 +73,19 @@ function createColorGrid(){
         var cell = tr.appendChild(document.createElement('td'));
         cell.className = "pixels";
         cell.style.backgroundColor = 'white';
-        cell.addEventListener('mouseover', function(){
+        cell.addEventListener('mouseover', function(event){
           if (event.buttons === 1) {
             if (event.shiftKey) {
-              this.style.backgroundColor = 'white';
+              event.target.style.backgroundColor = 'white';
             } else {
-              this.style.backgroundColor = colorChoice;
+              event.target.style.backgroundColor = colorChoice;
             }
           }
         });
-        cell.addEventListener('click', function(){
-          this.style.backgroundColor = colorChoice;
+        cell.addEventListener('click', function(event){
+
+          event.target.style.backgroundColor = colorChoice;
+          console.log(savedGrid[0]);
         });
       }
     }
@@ -68,10 +93,13 @@ function createColorGrid(){
 
   // return makeGrid(40,40);
   return {
-    makeGrid: makeGrid(40, 40),
-    makePallete: makePallete(),
-    miscButtons: miscButtons()
+    makeGrid: makeGrid,
+    makePallete: makePallete,
+    miscButtons: miscButtons
   };
 }
 
-var ll = createColorGrid();
+var pp = createColorGrid();
+pp.makeGrid(40, 40);
+pp.makePallete();
+pp.miscButtons();
