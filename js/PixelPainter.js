@@ -73,7 +73,7 @@ function createColorGrid(){
         var cell = tr.appendChild(document.createElement('td'));
         cell.className = "pixels";
         cell.style.backgroundColor = 'white';
-        cell.addEventListener('mouseover', function(event){
+        cell.addEventListener('touchstart mouseover', function(event){
           if (event.buttons === 1) {
             if (event.shiftKey) {
               event.target.style.backgroundColor = 'white';

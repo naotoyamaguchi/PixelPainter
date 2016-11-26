@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Orbitron');
 body {
-  background: #F0F0F0;
+  background: #DFDFDF;
   text-align: center;
   margin: 0;
 }
@@ -21,11 +21,6 @@ h1 {
 #pixelPainter{
   padding: 40px 0 0 82px;
   display: inline-block;
-}
-.square{
-  border: 2px solid red;
-  width: 5px;
-  height: 5px
 }
 .grid{
   display: inline-block;
