@@ -7,9 +7,31 @@ var savedGrid = [];
 var testGrid = [];
 var rowArray = [];
 var loadedGrid = '';
+var saveFile = "this";
+
 
 function createColorGrid(){
 
+  function savedFilesContainer(){
+    var loadList = document.createElement('div');
+    loadList.className = "loadList";
+    mainBody.appendChild(loadList);
+    // all saved files go in here
+    var saveFileForm = document.createElement('form');
+    loadList.appendChild(saveFileForm);
+    saveFileForm.setAttribute('action', 'javascript:;');
+    saveFileForm.setAttribute('onsubmit', 'console.log("test")');
+
+    var saveInput = document.createElement('input');
+    saveFileForm.appendChild(saveInput);
+    saveInput.setAttribute('type', 'text');
+    saveInput.setAttribute('name', 'fileName');
+
+    var submitButton = document.createElement('input');
+    saveFileForm.appendChild(submitButton);
+    submitButton.setAttribute('type', 'submit');
+    submitButton.setAttribute('value', 'Submit');
+  }
 
 
 
@@ -36,14 +58,14 @@ function createColorGrid(){
         savedGrid[z] = '"' + document.querySelectorAll('.pixels')[z].style.backgroundColor + '"';
       }
       loadedGrid = '[' + savedGrid + ']';
-      localStorage.setItem('saveFile', loadedGrid);
+      localStorage.setItem(saveFile, loadedGrid);
     });
 
     var loadButton = document.createElement('button');
     miscButtons.appendChild(loadButton);
     loadButton.innerHTML = 'Load';
     loadButton.addEventListener('click', function(){
-      loadedGrid = JSON.parse(localStorage.getItem('saveFile'));
+      loadedGrid = JSON.parse(localStorage.getItem(saveFile));
       for(var y = 0; y < document.querySelectorAll('.pixels').length; y++){
         document.querySelectorAll('.pixels')[y].style.backgroundColor = loadedGrid[y];
       }
@@ -100,7 +122,8 @@ function createColorGrid(){
   return {
     makeGrid: makeGrid,
     makePallete: makePallete,
-    miscButtons: miscButtons
+    miscButtons: miscButtons,
+    savedFilesContainer: savedFilesContainer
   };
 }
 
@@ -108,3 +131,4 @@ var pp = createColorGrid();
 pp.makeGrid(40, 40);
 pp.makePallete();
 pp.miscButtons();
+pp.savedFilesContainer();

@@ -22,6 +22,17 @@ h1 {
   padding: 40px 0 0 82px;
   display: inline-block;
 }
+.loadList {
+  display: inline-block;
+  height: 100px;
+  width: 100px;
+  background: red;
+}
+form {
+  height: 50px;
+  width: 200px;
+  background: blue;
+}
 .grid{
   display: inline-block;
   padding: 0 20px 0 0;
