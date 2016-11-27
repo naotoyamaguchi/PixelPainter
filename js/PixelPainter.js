@@ -4,6 +4,9 @@ var colorChoice = 'black';
 var colorButtons = [];
 var currentColorOfLoop;
 var savedGrid = [];
+var testGrid = [];
+var rowArray = [];
+var loadedGrid = '';
 
 function createColorGrid(){
 
@@ -29,19 +32,20 @@ function createColorGrid(){
     miscButtons.appendChild(saveButton);
     saveButton.innerHTML = 'Save';
     saveButton.addEventListener('click', function(){
-      console.log('test');
       for(var z = 0; z < document.querySelectorAll('.pixels').length; z++){
-        savedGrid[z] = document.querySelectorAll('.pixels')[z].style.backgroundColor;
+        savedGrid[z] = '"' + document.querySelectorAll('.pixels')[z].style.backgroundColor + '"';
       }
-      console.log(savedGrid);
+      loadedGrid = '[' + savedGrid + ']';
+      localStorage.setItem('saveFile', loadedGrid);
     });
 
     var loadButton = document.createElement('button');
     miscButtons.appendChild(loadButton);
     loadButton.innerHTML = 'Load';
     loadButton.addEventListener('click', function(){
+      loadedGrid = JSON.parse(localStorage.getItem('saveFile'));
       for(var y = 0; y < document.querySelectorAll('.pixels').length; y++){
-        document.querySelectorAll('.pixels')[y].style.backgroundColor = savedGrid[y];
+        document.querySelectorAll('.pixels')[y].style.backgroundColor = loadedGrid[y];
       }
     });
   }
@@ -69,11 +73,12 @@ function createColorGrid(){
 
     for(var i = 0; i<rows; i++){
       var tr = grid.appendChild(document.createElement('tr'));
+
       for(var j = 0; j<cols; j++){
         var cell = tr.appendChild(document.createElement('td'));
         cell.className = "pixels";
         cell.style.backgroundColor = 'white';
-        cell.addEventListener('touchstart mouseover', function(event){
+        cell.addEventListener('mouseover', function(event){
           if (event.buttons === 1) {
             if (event.shiftKey) {
               event.target.style.backgroundColor = 'white';
@@ -85,7 +90,7 @@ function createColorGrid(){
         cell.addEventListener('click', function(event){
 
           event.target.style.backgroundColor = colorChoice;
-          console.log(savedGrid[0]);
+          console.log(document.querySelectorAll('.rowz'));
         });
       }
     }
