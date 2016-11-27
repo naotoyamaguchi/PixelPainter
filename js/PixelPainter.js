@@ -7,10 +7,15 @@ var savedGrid = [];
 var testGrid = [];
 var rowArray = [];
 var loadedGrid = '';
-var saveFile = "this";
+var saveFile;
 
 
 function createColorGrid(){
+
+  function saveInput (){
+      saveFile = document.getElementById('save-test').value;
+      console.log(saveFile);
+  }
 
   function savedFilesContainer(){
     var loadList = document.createElement('div');
@@ -20,9 +25,11 @@ function createColorGrid(){
     var saveFileForm = document.createElement('form');
     loadList.appendChild(saveFileForm);
     saveFileForm.setAttribute('action', 'javascript:;');
-    saveFileForm.setAttribute('onsubmit', 'console.log("test")');
+    saveFileForm.setAttribute('onsubmit', "saveFile = document.getElementById('save-test').value");
+
 
     var saveInput = document.createElement('input');
+    saveInput.id = 'save-test';
     saveFileForm.appendChild(saveInput);
     saveInput.setAttribute('type', 'text');
     saveInput.setAttribute('name', 'fileName');
