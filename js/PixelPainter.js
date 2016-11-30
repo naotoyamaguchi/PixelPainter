@@ -19,14 +19,14 @@ function createColorGrid(){
 
   function savedFilesContainer(){
     var loadList = document.createElement('div');
+    loadList.id = "loadList";
     loadList.className = "loadList";
     mainBody.appendChild(loadList);
     // all saved files go in here
     var saveFileForm = document.createElement('form');
-    loadList.appendChild(saveFileForm);
+    mainBody.appendChild(saveFileForm);
     saveFileForm.setAttribute('action', 'javascript:;');
     saveFileForm.setAttribute('onsubmit', "saveFile = document.getElementById('save-test').value");
-
 
     var saveInput = document.createElement('input');
     saveInput.id = 'save-test';
@@ -38,7 +38,44 @@ function createColorGrid(){
     saveFileForm.appendChild(submitButton);
     submitButton.setAttribute('type', 'submit');
     submitButton.setAttribute('value', 'Submit');
+    submitButton.addEventListener('click', function(){
+      while (loadList.firstChild) {
+          loadList.removeChild(loadList.firstChild);
+      }
+      for(var z = 0; z < document.querySelectorAll('.pixels').length; z++){
+        savedGrid[z] = '"' + document.querySelectorAll('.pixels')[z].style.backgroundColor + '"';
+      }
+      loadedGrid = '[' + savedGrid + ']';
+      localStorage.setItem(document.getElementById('save-test').value, loadedGrid);
+      for(let i = 0; i < localStorage.length; i++){
+        var loadItem = document.createElement('li');
+        loadItem.innerHTML = localStorage.key(i);
+        loadItem.addEventListener('click', function(){
+          saveFile = localStorage.key(i);
+          loadedGrid = JSON.parse(localStorage.getItem(saveFile));
+          for(var y = 0; y < document.querySelectorAll('.pixels').length; y++){
+            document.querySelectorAll('.pixels')[y].style.backgroundColor = loadedGrid[y];
+          }
+        });
+        loadList.appendChild(loadItem);
+      }
+      });
+
+
+    for(let i = 0; i < localStorage.length; i++){
+      var loadItem = document.createElement('li');
+      loadItem.innerHTML = localStorage.key(i);
+      loadItem.addEventListener('click', function(){
+        saveFile = localStorage.key(i);
+        loadedGrid = JSON.parse(localStorage.getItem(saveFile));
+        for(var y = 0; y < document.querySelectorAll('.pixels').length; y++){
+          document.querySelectorAll('.pixels')[y].style.backgroundColor = loadedGrid[y];
+        }
+      });
+      loadList.appendChild(loadItem);
+    }
   }
+
 
 
 
@@ -139,3 +176,4 @@ pp.makeGrid(40, 40);
 pp.makePallete();
 pp.miscButtons();
 pp.savedFilesContainer();
+
