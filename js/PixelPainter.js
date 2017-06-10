@@ -32,12 +32,13 @@ function createColorGrid(){
     saveInput.id = 'save-test';
     saveFileForm.appendChild(saveInput);
     saveInput.setAttribute('type', 'text');
+    saveInput.setAttribute('value', 'Untitled');
     saveInput.setAttribute('name', 'fileName');
 
     var submitButton = document.createElement('input');
     saveFileForm.appendChild(submitButton);
     submitButton.setAttribute('type', 'submit');
-    submitButton.setAttribute('value', 'Submit');
+    submitButton.setAttribute('value', 'Save');
     submitButton.addEventListener('click', function(){
       while (loadList.firstChild) {
           loadList.removeChild(loadList.firstChild);
@@ -49,6 +50,7 @@ function createColorGrid(){
       localStorage.setItem(document.getElementById('save-test').value, loadedGrid);
       for(let i = 0; i < localStorage.length; i++){
         var loadItem = document.createElement('li');
+        loadItem.className = "loadItem";
         loadItem.innerHTML = localStorage.key(i);
         loadItem.addEventListener('click', function(){
           saveFile = localStorage.key(i);
@@ -65,6 +67,7 @@ function createColorGrid(){
     for(let i = 0; i < localStorage.length; i++){
       var loadItem = document.createElement('li');
       loadItem.innerHTML = localStorage.key(i);
+      loadItem.className = "loadItem";
       loadItem.addEventListener('click', function(){
         saveFile = localStorage.key(i);
         loadedGrid = JSON.parse(localStorage.getItem(saveFile));

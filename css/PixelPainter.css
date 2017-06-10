@@ -23,15 +23,18 @@ h1 {
   display: inline-block;
 }
 .loadList {
-  display: inline-block;
+  margin-top: 0.5rem;
   height: 100px;
   width: 100px;
-  background: red;
+  justify-content: left;
+  list-style-position: inside;
+  display: inline-block;
+
 }
 form {
   height: 50px;
   width: 200px;
-  background: blue;
+/*  background: blue;*/
 }
 .grid{
   display: inline-block;
@@ -87,4 +90,10 @@ form {
 }
 .miscButtons > button:hover {
   background: linear-gradient(#f3f3f3, #fff);
+}
+
+.loadItem {
+  border: 1px solid black;
+  text-align: left;
+  list-style: none;
 }
